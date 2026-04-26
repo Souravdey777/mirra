@@ -1242,14 +1242,25 @@ body {
   }
 
   .mirra-hero-scene {
-    bottom: 24px;
+    bottom: clamp(72px, 10vh, 96px);
     width: min(760px, 122vw);
   }
 
   .landing-footer {
-    left: 18px;
-    right: 18px;
-    bottom: 15px;
+    left: 50%;
+    right: auto;
+    bottom: 14px;
+    width: min(340px, calc(100% - 36px));
+    transform: translateX(-50%);
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    text-align: center;
     font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .landing-footer span {
+    display: block;
   }
 }
