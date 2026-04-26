@@ -1200,13 +1200,13 @@ body {
   }
 
   .landing-wordmark {
-    font-size: 22px;
+    font-size: 17px;
   }
 
   .landing-nav-cta {
     min-height: 42px;
     padding: 0 15px;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .landing-copy {
@@ -1214,8 +1214,9 @@ body {
   }
 
   .landing-copy h1 {
-    max-width: 360px;
-    font-size: clamp(42px, 12vw, 52px);
+    max-width: 310px;
+    font-size: clamp(30px, 8.8vw, 36px);
+    line-height: 1;
   }
 
   .landing-copy h1 span {
@@ -1223,27 +1224,38 @@ body {
   }
 
   .landing-copy > p {
-    max-width: 350px;
-    font-size: 16px;
+    width: min(100%, 320px);
+    max-width: 320px;
+    font-size: 14px;
+    line-height: 1.4;
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: initial;
   }
 
   .landing-copy .waitlist-form {
+    width: 100%;
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
   .landing-copy .waitlist-form input,
   .landing-copy .waitlist-form button {
-    min-height: 50px;
+    min-height: 46px;
+    font-size: 14px;
   }
 
   .landing-copy .waitlist-form p {
-    font-size: 12px;
+    font-size: 11px;
+    position: relative;
+    z-index: 2;
+    margin-top: 2px;
   }
 
   .mirra-hero-scene {
-    bottom: clamp(72px, 10vh, 96px);
-    width: min(760px, 122vw);
+    bottom: clamp(30px, 5vh, 54px);
+    width: min(720px, 116vw);
   }
 
   .landing-footer {
@@ -1256,7 +1268,7 @@ body {
     justify-content: center;
     gap: 4px;
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     line-height: 1.3;
   }
 
