@@ -1,0 +1,29 @@
+{
+  "name": "@mirra/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start --localhost",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mirra/design": "*",
+    "@mirra/product": "*",
+    "@tanstack/react-query": "^5.100.1",
+    "expo": "^55.0.17",
+    "expo-router": "^55.0.13",
+    "expo-status-bar": "^55.0.5",
+    "lucide-react-native": "^1.11.0",
+    "react": "^19.2.0",
+    "react-native": "^0.83.6",
+    "react-native-reanimated": "^4.2.1",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.23.0",
+    "react-native-svg": "^15.15.3",
+    "zustand": "^5.0.12"
+  }
+}

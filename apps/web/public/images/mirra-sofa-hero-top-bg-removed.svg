@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1672" height="941" viewBox="0 0 1672 941" role="img" aria-label="Mirra sitting on a sofa and looking at her phone">
+  <defs>
+    <clipPath id="sofa-mirra-clip">
+      <path d="M102 337C144 318 237 313 318 319H843C872 221 931 126 1038 91C1143 55 1289 74 1340 174C1377 245 1372 302 1451 317C1548 335 1591 385 1594 505V884H91V512C91 430 75 360 102 337Z" />
+    </clipPath>
+  </defs>
+  <image href="mirra-sofa-hero.png" width="1672" height="941" preserveAspectRatio="xMidYMid meet" clip-path="url(#sofa-mirra-clip)" />
+</svg>

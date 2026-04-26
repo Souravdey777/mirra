@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Mirra",
+    "slug": "mirra",
+    "scheme": "mirra",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "icon": "./assets/images/mirra-avatar.png",
+    "splash": {
+      "image": "./assets/images/mirra-avatar.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FBF4EA"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

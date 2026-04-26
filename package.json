@@ -1,0 +1,22 @@
+{
+  "name": "mirra",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "dev:mobile": "npm run dev --workspace @mirra/mobile",
+    "dev:web": "npm run dev --workspace @mirra/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "build:web": "npm run build --workspace @mirra/web"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}
