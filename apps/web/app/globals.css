@@ -1196,7 +1196,7 @@ body {
   }
 
   .landing-header {
-    min-height: 50px;
+    min-height: 38px;
   }
 
   .landing-wordmark {
@@ -1210,7 +1210,7 @@ body {
   }
 
   .landing-copy {
-    margin-top: clamp(12px, 3.5vh, 28px);
+    margin-top: clamp(4px, 1.6vh, 12px);
   }
 
   .landing-copy h1 {
