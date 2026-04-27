@@ -3,6 +3,8 @@
 import { ArrowRight } from "lucide-react";
 import { FormEvent, useState } from "react";
 
+import { captureClientEvent, getClientDistinctId } from "@/lib/posthog-client";
+
 const IDLE_MESSAGE = "Early access for solo creators. No auto-posting.";
 const SUBMITTING_MESSAGE = "Saving your spot...";
 const FALLBACK_ERROR_MESSAGE = "We could not save that email yet. Please try again soon.";
@@ -16,6 +18,10 @@ export function WaitlistForm() {
     event.preventDefault();
     setStatus("submitting");
     setMessage(SUBMITTING_MESSAGE);
+    captureClientEvent("waitlist_submit_attempt", {
+      location: "landing_hero",
+      source: "website"
+    });
 
     try {
       const response = await fetch("/api/waitlist", {
@@ -23,7 +29,10 @@ export function WaitlistForm() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({
+          distinctId: getClientDistinctId(),
+          email
+        })
       });
 
       const data = (await response.json().catch(() => null)) as { message?: string } | null;
