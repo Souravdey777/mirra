@@ -1,5 +1,6 @@
 import { MirraHeroScene } from "@/components/MirraHeroScene";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -30,6 +31,15 @@ export default function Home() {
         <footer className="landing-footer">
           <span>For creators. Coming soon.</span>
           <span>Your ideas. Your voice. Mirra helps shape the post.</span>
+          <a
+            className="landing-footer-link"
+            href="https://www.linkedin.com/company/hellomirra"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Follow on LinkedIn
+            <ArrowUpRight aria-hidden size={14} strokeWidth={2.6} />
+          </a>
         </footer>
       </section>
     </main>

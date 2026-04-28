@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Check, X } from "lucide-react";
+import { ArrowRight, Sparkles, X } from "lucide-react";
 import { FormEvent, MouseEvent, useEffect, useRef, useState } from "react";
 
 import { captureClientEvent, getClientDistinctId } from "@/lib/posthog-client";
@@ -191,7 +191,7 @@ export function WaitlistForm() {
               <div className="waitlist-modal-success">
                 <div className="waitlist-modal-topline">
                   <span className="waitlist-modal-status">
-                    <Check aria-hidden size={15} strokeWidth={3} />
+                    <Sparkles aria-hidden size={15} strokeWidth={2.6} />
                     Exclusive beta
                   </span>
                   <button
@@ -205,7 +205,7 @@ export function WaitlistForm() {
                 </div>
                 <h2 id="waitlist-profile-title">You&apos;re on the inside list.</h2>
                 <p id="waitlist-profile-description">{profileMessage}</p>
-                <button type="button" onClick={closeProfileModal}>
+                <button className="waitlist-modal-done" type="button" onClick={closeProfileModal}>
                   Done
                 </button>
               </div>
@@ -213,7 +213,7 @@ export function WaitlistForm() {
               <>
                 <div className="waitlist-modal-topline">
                   <span className="waitlist-modal-status">
-                    <Check aria-hidden size={15} strokeWidth={3} />
+                    <Sparkles aria-hidden size={15} strokeWidth={2.6} />
                     Exclusive beta
                   </span>
                   <button
