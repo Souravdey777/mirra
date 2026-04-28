@@ -4,6 +4,8 @@ import postgres from "postgres";
 
 let sqlClient: ReturnType<typeof postgres> | undefined;
 
+export type WaitlistPlatform = "both" | "linkedin" | "x";
+
 export function isWaitlistConfigured() {
   return Boolean(process.env.DATABASE_URL);
 }
@@ -16,6 +18,39 @@ export function normalizeWaitlistEmail(email: string) {
   }
 
   return normalized;
+}
+
+export function normalizeWaitlistProfileUrl(profileUrl: string, network: "linkedin" | "x") {
+  const trimmed = profileUrl.trim();
+
+  if (!trimmed) {
+    return null;
+  }
+
+  const urlWithProtocol = /^[a-z][a-z\d+\-.]*:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+
+  try {
+    const url = new URL(urlWithProtocol);
+    const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
+    const isLinkedInHost = hostname === "linkedin.com" || hostname.endsWith(".linkedin.com");
+    const isXHost =
+      hostname === "x.com" ||
+      hostname.endsWith(".x.com") ||
+      hostname === "twitter.com" ||
+      hostname.endsWith(".twitter.com");
+    const isAllowedHost = network === "linkedin" ? isLinkedInHost : isXHost;
+
+    if ((url.protocol !== "https:" && url.protocol !== "http:") || !isAllowedHost || url.pathname === "/") {
+      return null;
+    }
+
+    url.protocol = "https:";
+    url.hash = "";
+
+    return url.toString();
+  } catch {
+    return null;
+  }
 }
 
 function getSqlClient() {
@@ -57,5 +92,43 @@ export async function createWaitlistSignup(input: CreateWaitlistSignupInput) {
 
   return {
     inserted: rows.length > 0
+  };
+}
+
+type UpdateWaitlistProfileInput = {
+  email: string;
+  linkedinProfileUrl: string | null;
+  xProfileUrl: string | null;
+};
+
+export async function updateWaitlistProfile(input: UpdateWaitlistProfileInput) {
+  const email = normalizeWaitlistEmail(input.email);
+  const linkedinProfileUrl = input.linkedinProfileUrl
+    ? normalizeWaitlistProfileUrl(input.linkedinProfileUrl, "linkedin")
+    : null;
+  const xProfileUrl = input.xProfileUrl ? normalizeWaitlistProfileUrl(input.xProfileUrl, "x") : null;
+
+  if (!email || (!linkedinProfileUrl && !xProfileUrl)) {
+    throw new Error("A valid email and at least one profile URL are required");
+  }
+
+  const platform: WaitlistPlatform = linkedinProfileUrl && xProfileUrl ? "both" : linkedinProfileUrl ? "linkedin" : "x";
+  const primaryProfileUrl = linkedinProfileUrl ?? xProfileUrl;
+
+  const rows = await getSqlClient()<[{ id: number }]>`
+    update public.waitlist_signups
+    set
+      preferred_platform = ${platform},
+      profile_url = ${primaryProfileUrl},
+      linkedin_profile_url = ${linkedinProfileUrl},
+      x_profile_url = ${xProfileUrl},
+      onboarding_status = 'profile_added',
+      profile_submitted_at = now()
+    where email_normalized = ${email}
+    returning id
+  `;
+
+  return {
+    updated: rows.length > 0
   };
 }

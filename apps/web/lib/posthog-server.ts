@@ -2,7 +2,11 @@ import "server-only";
 
 import { PostHog } from "posthog-node";
 
-type ServerAnalyticsEvent = "waitlist_signup_success" | "waitlist_signup_error";
+type ServerAnalyticsEvent =
+  | "waitlist_profile_added"
+  | "waitlist_profile_error"
+  | "waitlist_signup_error"
+  | "waitlist_signup_success";
 
 type AnalyticsProperties = Record<string, boolean | number | string | null>;
 

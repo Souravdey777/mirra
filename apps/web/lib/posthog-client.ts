@@ -2,7 +2,10 @@
 
 import posthog from "posthog-js";
 
-type ClientAnalyticsEvent = "waitlist_submit_attempt";
+type ClientAnalyticsEvent =
+  | "waitlist_profile_modal_skip"
+  | "waitlist_profile_submit_attempt"
+  | "waitlist_submit_attempt";
 
 type AnalyticsProperties = Record<string, boolean | number | string | null>;
 

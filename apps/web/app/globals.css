@@ -485,6 +485,201 @@ h1 {
   color: #b04a42;
 }
 
+.waitlist-modal-backdrop {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(31, 26, 23, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.waitlist-modal {
+  width: min(560px, calc(100vw - 36px));
+  max-height: min(680px, calc(100svh - 36px));
+  display: grid;
+  gap: 20px;
+  overflow: auto;
+  padding: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(237, 227, 216, 0.9);
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 24px 70px rgba(31, 26, 23, 0.2);
+  text-align: left;
+}
+
+.waitlist-modal-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.waitlist-modal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff8ef;
+  color: #4c7761;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.waitlist-modal-close {
+  flex: 0 0 auto;
+  width: 38px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+}
+
+.waitlist-modal-heading {
+  display: grid;
+  gap: 10px;
+}
+
+.waitlist-modal h2 {
+  max-width: 460px;
+  font-size: clamp(27px, 3vw, 34px);
+  line-height: 1.03;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.waitlist-modal-heading p,
+.waitlist-modal-success > p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 680;
+}
+
+.waitlist-profile-form,
+.waitlist-modal-success {
+  display: grid;
+  gap: 18px;
+}
+
+.waitlist-profile-group,
+.waitlist-profile-fields {
+  display: grid;
+  gap: 10px;
+}
+
+.waitlist-profile-group {
+  margin: 0;
+  padding: 0;
+}
+
+.waitlist-profile-group-title,
+.waitlist-profile-fields label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.waitlist-profile-group-title {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.waitlist-profile-fields label {
+  display: grid;
+  gap: 7px;
+  line-height: 1.2;
+}
+
+.waitlist-profile-fields input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  background: #fff8ef;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.waitlist-profile-fields input:focus {
+  border-color: var(--denim);
+  box-shadow: 0 0 0 4px rgba(91, 140, 255, 0.16);
+}
+
+.waitlist-profile-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: stretch;
+  gap: 8px;
+}
+
+.waitlist-profile-actions button,
+.waitlist-modal-success button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 950;
+}
+
+.waitlist-profile-actions button:first-child,
+.waitlist-modal-success button {
+  padding: 0 20px;
+  border: 0;
+  background: var(--text);
+  color: var(--card);
+  box-shadow: 0 12px 22px rgba(31, 26, 23, 0.14);
+}
+
+.waitlist-profile-actions .waitlist-profile-skip {
+  width: fit-content;
+  min-height: 32px;
+  justify-self: center;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
+  font-size: 13px;
+}
+
+.waitlist-profile-form button:disabled,
+.waitlist-profile-fields input:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+}
+
+.waitlist-profile-form > p {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+  text-align: center;
+}
+
+.waitlist-profile-form > p[data-status="success"] {
+  color: #3a7553;
+}
+
+.waitlist-profile-form > p[data-status="error"] {
+  color: #b04a42;
+}
+
 .mockup-section,
 .explain-section,
 .audience-section,
@@ -1277,6 +1472,18 @@ body {
     position: relative;
     z-index: 2;
     margin-top: 2px;
+  }
+
+  .waitlist-modal {
+    padding: 24px 18px 20px;
+  }
+
+  .waitlist-modal h2 {
+    font-size: 28px;
+  }
+
+  .waitlist-profile-actions {
+    grid-template-columns: 1fr;
   }
 
   .mirra-hero-scene {
